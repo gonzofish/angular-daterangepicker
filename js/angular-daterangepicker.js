@@ -8,7 +8,7 @@
     format: 'YYYY-MM-DD'
   });
 
-  picker.directive('dateRangePicker', ['$compile', '$timeout', '$parse', 'dateRangePickerConfig', function($compile, $timeout, $parse, dateRangePickerConfig) {
+  picker.directive('dateRangePicker', function($compile, $timeout, $parse, dateRangePickerConfig) {
     return {
       require: 'ngModel',
       restrict: 'A',
@@ -19,7 +19,8 @@
         opts: '=options'
       },
       link: function($scope, element, attrs, modelCtrl) {
-        var customOpts, el, opts, _formatted, _init, _picker, _setEndDate, _setStartDate, _validateMax, _validateMin;
+        var customOpts, el, opts, _formatted, _init, _picker, _setEndDate, _setStartDate, _validateMax, _validateMin,
+          _this = this;
         el = $(element);
         customOpts = $scope.opts;
         opts = angular.extend({}, dateRangePickerConfig, customOpts);
@@ -48,12 +49,18 @@
             }
           });
         };
-        $scope.$watch('model.startDate', function(newValue) {
-          return _setStartDate(newValue);
-        });
-        $scope.$watch('model.endDate', function(newValue) {
-          return _setEndDate(newValue);
-        });
+        if (opts.singleDatePicker) {
+          $scope.$watch('model', function(n) {
+            return _setStartDate(n);
+          });
+        } else {
+          $scope.$watch('model.startDate', function(newValue) {
+            return _setStartDate(newValue);
+          });
+          $scope.$watch('model.endDate', function(newValue) {
+            return _setEndDate(newValue);
+          });
+        }
         _formatted = function(viewVal) {
           var f;
           f = function(date) {
@@ -186,6 +193,6 @@
         });
       }
     };
-  }]);
+  });
 
 }).call(this);

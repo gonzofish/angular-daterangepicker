@@ -36,11 +36,15 @@ picker.directive('dateRangePicker', ($compile, $timeout, $parse, dateRangePicker
           _picker.setEndDate(m)
 
     #Watchers enable resetting of start and end dates
-    $scope.$watch 'model.startDate', (newValue) ->
-      _setStartDate(newValue)
+    if (opts.singleDatePicker)
+      $scope.$watch 'model', (n) =>
+        _setStartDate(n)
+    else
+      $scope.$watch 'model.startDate', (newValue) ->
+        _setStartDate(newValue)
 
-    $scope.$watch 'model.endDate', (newValue) ->
-      _setEndDate(newValue)
+      $scope.$watch 'model.endDate', (newValue) ->
+        _setEndDate(newValue)
 
     _formatted = (viewVal) ->
       f = (date) ->
