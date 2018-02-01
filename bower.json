@@ -21,7 +21,7 @@
   "dependencies": {
     "angular": "^1.2.17",
     "bootstrap": "^3.0.0",
-    "bootstrap-daterangepicker": "gonzofish/bootstrap-daterangepicker#cb7590e"
+    "bootstrap-daterangepicker": "yougov/bootstrap-daterangepicker#cb7590e8dee34675a3b75c5cd8a0df8d2c749250"
   },
   "devDependencies": {
     "angular-messages": "^1.2.17"
