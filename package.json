@@ -7,7 +7,7 @@
   "dependencies": {
     "angular": "^1.2.17",
     "bootstrap": "^3.0.0",
-    "bootstrap-daterangepicker": "yougov/bootstrap-daterangepicker#81318f09276995274cf85868e71dfbf9e4e4de5f"
+    "bootstrap-daterangepicker": "yougov/bootstrap-daterangepicker#05eaec5d7844042567d1e23524882f5483d5b5e5"
   },
   "devDependencies": {
     "angular-messages": "^1.2.17",
